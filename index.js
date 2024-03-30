@@ -3,7 +3,7 @@ const cors = require("cors")
 const port = 3000
 const mongoose = require('mongoose');
 const app = express()
-const productRoute = require("./Product/productRoute")
+const useproductRoute = require("./Product/productRoute")
 app.use(cors())
 // mongodb+srv://<username>:<password>@cluster0.oqk84kq.mongodb.net/
 const connectDB = mongoose.connect(`mongodb+srv://test_mongoose:N6Njs7Tgu2bUiwNX@cluster0.oqk84kq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
@@ -19,7 +19,11 @@ function run() {
 run()
 
 app.use(express.json())
-app.use("/api", productRoute)
+app.use("/", useproductRoute)
+// app.post("/additems", async(req,res)=>{
+//     const data= req.body
+//     console.log(data);
+// })
 
 
 
