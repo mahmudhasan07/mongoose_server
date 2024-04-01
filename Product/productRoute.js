@@ -10,17 +10,28 @@ route.post("/additems", async (req, res) => {
     res.send(result)
 })
 
-route.get("/items", async(req,res)=>{
+route.get("/items", async (req, res) => {
     const result = await productSchema.find()
     res.send(result)
 })
 
-route.delete("/items/:id", async(req,res)=>{
-    const id = req.params.id
-    console.log(id);
-    const result = await productSchema.deleteOne(id)
+route.get(`/items/:name`, async(req,res)=>{
+    const name = req.params.name
+    const query = {name : {$regex :name, $options : "i" }}
+    const result = await productSchema.findOne(query)
     res.send(result)
+})
+
+route.get(`/items/sortb-a`, async(req,res)=>{
     
+})
+
+route.delete("/items/:id", async (req, res) => {
+    const id = req.params.id
+    const query = { _id: new Object(id) }
+    const result = await productSchema.deleteOne(query)
+    res.send(result)
+
 })
 
 
