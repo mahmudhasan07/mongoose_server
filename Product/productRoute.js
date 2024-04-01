@@ -22,8 +22,12 @@ route.get(`/items/:name`, async(req,res)=>{
     res.send(result)
 })
 
-route.get(`/items/sortb-a`, async(req,res)=>{
-    
+route.get(`/items/:sort`, async(req,res)=>{
+    const sortdata = req.params.sort
+    console.log(sortdata);
+    const query = {price: 1}
+    const result = await productSchema.find().sort(query)
+    res.send(result)
 })
 
 route.delete("/items/:id", async (req, res) => {
