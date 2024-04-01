@@ -18,6 +18,8 @@ route.get("/items", async(req,res)=>{
 route.delete("/items/:id", async(req,res)=>{
     const id = req.params.id
     console.log(id);
+    const result = await productSchema.deleteOne(id)
+    res.send(result)
     
 })
 
