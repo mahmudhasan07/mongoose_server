@@ -15,5 +15,11 @@ route.get("/items", async(req,res)=>{
     res.send(result)
 })
 
+route.delete("/items/:id", async(req,res)=>{
+    const id = req.params.id
+    console.log(id);
+    
+})
+
 
 module.exports = route
