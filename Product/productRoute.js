@@ -22,11 +22,11 @@ route.get(`/items/:name`, async(req,res)=>{
     res.send(result)
 })
 
-route.get(`/items/:sort`, async(req,res)=>{
-    const sortdata = req.params.sort
+route.get(`/item/:data`, async(req,res)=>{
+    const sortdata = req.params.data
     console.log(sortdata);
     const query = {price: 1}
-    const result = await productSchema.find().sort(query)
+    const result = await productSchema.find().collation()
     res.send(result)
 })
 
