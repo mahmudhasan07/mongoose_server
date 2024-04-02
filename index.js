@@ -4,6 +4,7 @@ const port = 3000
 const mongoose = require('mongoose');
 const app = express()
 const useproductRoute = require("./Product/productRoute")
+const userRoute = require('./User/userRoute')
 app.use(cors())
 // mongodb+srv://<username>:<password>@cluster0.oqk84kq.mongodb.net/
 const connectDB = mongoose.connect(`mongodb+srv://test_mongoose:N6Njs7Tgu2bUiwNX@cluster0.oqk84kq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
@@ -20,6 +21,7 @@ run()
 
 app.use(express.json())
 app.use("/", useproductRoute)
+app.use("/", userRoute)
 // app.post("/additems", async(req,res)=>{
 //     const data= req.body
 //     console.log(data);
